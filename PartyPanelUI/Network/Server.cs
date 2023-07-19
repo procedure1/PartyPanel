@@ -159,7 +159,7 @@ namespace PartyPanelUI.Network
             PlayerDisconnected?.Invoke(player);
         }
 
-        public void Send(byte[] data)
+        public void Send(byte[] data, string test = "empty")
         {
             NetworkPlayer player = null;
             lock (players)
@@ -174,8 +174,8 @@ namespace PartyPanelUI.Network
                 //Get the socket for the specified playerId
                 var socket = player?.workSocket;
 
-                // Begin sending the data to the remote device.  
-                socket?.BeginSend(data, 0, data.Length, 0, new AsyncCallback(SendCallback), player);
+				// Begin sending the data to the remote device.
+				socket?.BeginSend(data, 0, data.Length, 0, new AsyncCallback(SendCallback), player);
             }
             catch (Exception e)
             {

@@ -304,12 +304,33 @@ namespace PartyPanel
 
                 SaberUtilities.PlaySong(desiredLevel, desiredCharacteristic, desiredDifficulty, playSong);
             }
-            else if (packet.Type == PacketType.Command)
+            else if (packet.Type == PacketType.Command)//BW added 5 new commands
             {
                 Command command = packet.SpecificPacket as Command;
+
                 if (command.commandType == Command.CommandType.ReturnToMenu)
                 {
                     SaberUtilities.ReturnToMenu();
+                }
+                else if (command.commandType == Command.CommandType.SoloMenu)
+                {
+                    SaberUtilities.SoloMenu();
+                }
+                else if (command.commandType == Command.CommandType.OnlineMenu)
+                {
+                    SaberUtilities.OnlineMenu();
+                }
+                else if (command.commandType == Command.CommandType.PlayCampaign)
+                {
+                    SaberUtilities.PlayCampaign();
+                }
+                else if (command.commandType == Command.CommandType.PartyMenu)
+                {
+                    SaberUtilities.PartyMenu();
+                }
+                else if (command.commandType == Command.CommandType.PlayTutorial)
+                {
+                    SaberUtilities.PlayTutorial();
                 }
             } 
             else if (packet.Type == PacketType.DownloadSong)

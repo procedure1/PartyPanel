@@ -6,10 +6,12 @@ namespace PartyPanelShared.Models
     [ProtoContract]
     public class Command
     {
+		//BW added
         public enum CommandType
         {
             Heartbeat,
-            ReturnToMenu
+            ReturnToMenu,
+			PlayTutorial
         }
         [ProtoMember(1)]
         public CommandType commandType;

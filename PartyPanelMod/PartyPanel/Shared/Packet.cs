@@ -65,7 +65,7 @@ namespace PartyPanelShared
 				case PacketType.PlaySong:
 					Serializer.Serialize(memory, SpecificPacket as PlaySong);
 					break;
-				case PacketType.DownloadSong:
+                case PacketType.DownloadSong:
 					Serializer.Serialize(memory, SpecificPacket as DownloadSong);
 					break;
 				case PacketType.AllSongs:

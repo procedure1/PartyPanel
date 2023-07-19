@@ -349,6 +349,17 @@ inert-style, title {
     border: none;
     font-size: 25px;
 }
+/*BW added this*/
+.ModeButton {
+    display: block;
+    margin: auto;
+    width: 250px;
+    height: 30px;
+    background: linear-gradient(0deg, rgba(0,128,255,1) 0%, rgba(0,110,255,1) 100%);
+    border-radius: 10px;
+    border: none;
+    font-size: 25px;
+}
 
 .EditBackground {
     margin-left: auto;

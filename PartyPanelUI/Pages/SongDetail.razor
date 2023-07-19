@@ -92,6 +92,10 @@
 			<button class="PlayButton" @onclick="Play">
 					<p style="transform: skew(5deg); margin: 0px;">@GetActionButtonText()</p>
 			</button>
+			<!--BW added -->
+			<button class="ModeButton" @onclick="PlayTutorial">
+					<p style="transform: skew(5deg); margin: 0px;">Tutorial</p>
+			</button>
 		</div>
 	</div>
 	<div class="SongDetail Modifiers">
@@ -220,6 +224,11 @@
 			StateHasChanged();
 			GlobalData.RefreshList();
 		}
+	}
+	/*BW added*/
+	void PlayTutorial()
+	{
+		GlobalData.server.Send(new Packet(new Command(Command.CommandType.PlayTutorial)).ToBytes());
 	}
 
 	void SelectDifficulty(string id)

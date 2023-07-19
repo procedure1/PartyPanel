@@ -64,8 +64,12 @@ namespace PartyPanel
             };
             HMMainThreadDispatcher.instance.Enqueue(() =>
             {
-                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "SoloButton").FirstOrDefault();
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "SoloButton").FirstOrDefault();//SoloButton CampaignButton HelpButton
                 button.onClick.Invoke();
+                //BW if enter Help Menu then can follow it with this to start tutorial
+                /* NoTransitionsButton button1 = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "TutorialButton").FirstOrDefault();//SoloButton CampaignButton HelpButton
+                button1.onClick.Invoke();
+                */
             });
             if (true)
             {
@@ -86,6 +90,55 @@ namespace PartyPanel
                 Resources.FindObjectsOfTypeAll<StandardLevelReturnToMenuController>()?.FirstOrDefault()?.ReturnToMenu();
             });
         }
+        //BW added these-----------------------------------------------
+        public static void SoloMenu()
+        {
+            ReturnToMenu();
+            HMMainThreadDispatcher.instance.Enqueue(() =>
+            {
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "SoloButton").FirstOrDefault();//SoloButton CampaignButton HelpButton TutorialButton
+                button.onClick.Invoke();
+            });
+        }
+        public static void OnlineMenu()
+        {
+            ReturnToMenu();
+            HMMainThreadDispatcher.instance.Enqueue(() =>
+            {
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "OnlineButton").FirstOrDefault();
+                button.onClick.Invoke();
+            });
+        }
+        public static void PlayCampaign()
+        {
+            ReturnToMenu();
+            HMMainThreadDispatcher.instance.Enqueue(() =>
+            {
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "CampaignButton").FirstOrDefault();
+                button.onClick.Invoke();
+            });
+        }
+        public static void PartyMenu()
+        {
+            ReturnToMenu();
+            HMMainThreadDispatcher.instance.Enqueue(() =>
+            {
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "PartyButton").FirstOrDefault();
+                button.onClick.Invoke();
+            });
+        }
+        public static void PlayTutorial()
+        {
+            ReturnToMenu();
+            HMMainThreadDispatcher.instance.Enqueue(() =>
+            {
+                NoTransitionsButton button = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "HelpButton").FirstOrDefault();
+                button.onClick.Invoke();
+                NoTransitionsButton button1 = Resources.FindObjectsOfTypeAll<NoTransitionsButton>().Where(x => x != null && x.gameObject.name == "TutorialButton").FirstOrDefault();
+                button1.onClick.Invoke();
+            });
+        }
+        //-----------------------------------------------------------
 
         public static async Task<bool> HasDLCLevel(string levelId, AdditionalContentModel additionalContentModel = null)
         {
